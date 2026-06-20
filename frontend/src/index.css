@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: radial-gradient(ellipse at top, #0b1030 0%, #05060e 60%);
+  color: #e7eaf6;
+  font-family: ui-sans-serif, system-ui, -apple-system, sans-serif;
+  overflow: hidden;
+}
+
+@layer components {
+  .panel {
+    @apply bg-cosmos-panel/80 border border-cosmos-border rounded-xl backdrop-blur;
+  }
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors disabled:opacity-40 disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-cosmos-accent hover:bg-cosmos-accent/80 text-white;
+  }
+  .btn-ghost {
+    @apply btn bg-cosmos-panel2 hover:bg-cosmos-border text-cosmos-accent2;
+  }
+  .chip {
+    @apply text-xs px-2 py-0.5 rounded-full border;
+  }
+}
+
+/* Range slider styling */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #7c5cff, #34d3ff);
+  outline: none;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #7c5cff;
+  cursor: pointer;
+}
+input[type="range"]::-moz-range-thumb {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid #7c5cff;
+  cursor: pointer;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #23294a;
+  border-radius: 8px;
+}
