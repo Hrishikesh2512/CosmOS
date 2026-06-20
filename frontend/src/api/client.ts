@@ -1,4 +1,12 @@
-// Typed client for the Genesis backend API.
+// Client facade for the Genesis engine.
+//
+// The simulation runs entirely in the browser (see src/engine), so the app is a
+// fully static site that works on GitHub Pages with no backend. Saved universes
+// are persisted in localStorage. The method surface matches the original HTTP
+// client so the UI components are unchanged.
+//
+// If you prefer a hosted Python backend instead, set VITE_API_BASE at build
+// time and swap these implementations for fetch() calls to that API.
 
 import type {
   UniverseParameters,
@@ -6,73 +14,115 @@ import type {
   Diagnosis,
   Comparison,
 } from "../types";
+import { simulate, baseline, parseWhatIf, compare, AIScientist } from "../engine";
 
-// In local dev the Vite proxy forwards /api -> http://localhost:8000.
-// In a static deployment (e.g. GitHub Pages) set VITE_API_BASE at build time to
-// point at a hosted backend, e.g. https://your-backend.onrender.com/api
-const BASE = import.meta.env.VITE_API_BASE ?? "/api";
+const STORE_KEY = "genesis.universes";
 
-async function http<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(`${BASE}${path}`, {
-    headers: { "Content-Type": "application/json" },
-    ...init,
-  });
-  if (!res.ok) {
-    let detail = res.statusText;
-    try {
-      const body = await res.json();
-      detail = body.detail ?? detail;
-    } catch {
-      /* ignore */
-    }
-    throw new Error(`API ${res.status}: ${detail}`);
-  }
-  return res.json() as Promise<T>;
+interface StoredUniverse {
+  id: string;
+  name: string;
+  parameters: UniverseParameters;
+  result: SimulationResult | null;
+  created_at: string;
+  updated_at: string;
+  share_token: string | null;
 }
 
+function readStore(): Record<string, StoredUniverse> {
+  try {
+    return JSON.parse(localStorage.getItem(STORE_KEY) ?? "{}");
+  } catch {
+    return {};
+  }
+}
+
+function writeStore(data: Record<string, StoredUniverse>): void {
+  localStorage.setItem(STORE_KEY, JSON.stringify(data));
+}
+
+function uid(): string {
+  return Math.random().toString(36).slice(2, 14);
+}
+
+// Yield to the event loop so the "Simulating…" state can paint before the
+// (fast, synchronous) computation runs.
+const tick = () => new Promise<void>((r) => setTimeout(r, 0));
+
 export const api = {
-  baseline: () => http<UniverseParameters>("/baseline"),
+  baseline: async (): Promise<UniverseParameters> => baseline(),
 
-  simulate: (params: UniverseParameters) =>
-    http<{ result: SimulationResult }>("/simulate", {
-      method: "POST",
-      body: JSON.stringify(params),
-    }).then((r) => r.result),
+  simulate: async (params: UniverseParameters): Promise<SimulationResult> => {
+    await tick();
+    return simulate(params);
+  },
 
-  whatIf: (prompt: string, baseline?: UniverseParameters) =>
-    http<Comparison>("/whatif", {
-      method: "POST",
-      body: JSON.stringify({ prompt, baseline }),
-    }),
+  whatIf: async (prompt: string, base?: UniverseParameters): Promise<Comparison> => {
+    await tick();
+    const candidate = parseWhatIf(prompt, base);
+    return compare(candidate, base);
+  },
 
-  whatIfParams: (parameters: UniverseParameters, baseline?: UniverseParameters) =>
-    http<Comparison>("/whatif", {
-      method: "POST",
-      body: JSON.stringify({ parameters, baseline }),
-    }),
+  whatIfParams: async (parameters: UniverseParameters, base?: UniverseParameters): Promise<Comparison> => {
+    await tick();
+    return compare(parameters, base);
+  },
 
-  ask: (question: string, result: SimulationResult) =>
-    http<Diagnosis>("/ask", {
-      method: "POST",
-      body: JSON.stringify({ question, result }),
-    }),
+  ask: async (question: string, result: SimulationResult): Promise<Diagnosis> => {
+    return new AIScientist(result).ask(question);
+  },
 
-  saveUniverse: (parameters: UniverseParameters, result?: SimulationResult, id?: string) =>
-    http<{ id: string; name: string; share_token: string | null }>("/universes", {
-      method: "POST",
-      body: JSON.stringify({ parameters, result, universe_id: id }),
-    }),
+  saveUniverse: async (
+    parameters: UniverseParameters,
+    result?: SimulationResult,
+    id?: string
+  ): Promise<{ id: string; name: string; share_token: string | null }> => {
+    const store = readStore();
+    const now = new Date().toISOString();
+    const key = id ?? uid();
+    const existing = store[key];
+    store[key] = {
+      id: key,
+      name: parameters.name,
+      parameters,
+      result: result ?? null,
+      created_at: existing?.created_at ?? now,
+      updated_at: now,
+      share_token: existing?.share_token ?? null,
+    };
+    writeStore(store);
+    return { id: key, name: parameters.name, share_token: store[key].share_token };
+  },
 
-  listUniverses: () =>
-    http<
-      { id: string; name: string; parameters: UniverseParameters; outcome: string }[]
-    >("/universes"),
+  listUniverses: async (): Promise<
+    { id: string; name: string; parameters: UniverseParameters; outcome: string }[]
+  > =>
+    Object.values(readStore()).map((u) => ({
+      id: u.id,
+      name: u.name,
+      parameters: u.parameters,
+      outcome: u.result?.scorecard.outcome ?? "",
+    })),
 
-  getUniverse: (id: string) => http<any>(`/universes/${id}`),
+  getUniverse: async (id: string): Promise<StoredUniverse> => {
+    const u = readStore()[id];
+    if (!u) throw new Error("Universe not found");
+    return u;
+  },
 
-  deleteUniverse: (id: string) =>
-    http<{ deleted: boolean }>(`/universes/${id}`, { method: "DELETE" }),
+  deleteUniverse: async (id: string): Promise<{ deleted: boolean }> => {
+    const store = readStore();
+    const existed = id in store;
+    delete store[id];
+    writeStore(store);
+    return { deleted: existed };
+  },
 
-  share: (id: string) =>
-    http<{ share_token: string }>(`/universes/${id}/share`, { method: "POST" }),
+  share: async (id: string): Promise<{ share_token: string }> => {
+    const store = readStore();
+    if (!store[id]) throw new Error("Universe not found");
+    const token = store[id].share_token ?? uid() + uid();
+    store[id].share_token = token;
+    writeStore(store);
+    return { share_token: token };
+  },
 };

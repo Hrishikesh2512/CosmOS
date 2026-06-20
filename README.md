@@ -49,6 +49,18 @@ fine-structure constant's control over chemistry, and more. See
   *how* to make it life-friendly.
 - 💾 **Save / load / share** universes; export reports and screenshots.
 
+## Live demo
+
+The app is deployed as a fully static site on GitHub Pages:
+**https://hrishikesh2512.github.io/CosmOS/**
+
+The frontend ships with a complete TypeScript port of the simulation engine
+(`frontend/src/engine`), so the live site runs entirely in your browser with **no
+backend required** - every universe is simulated client-side in milliseconds, and
+saved universes are stored in `localStorage`. The Python/FastAPI backend
+(`backend/`) is an optional, identical reference implementation for those who
+prefer a server, notebooks or batch parameter sweeps.
+
 ## Tech stack
 
 - **Frontend**: React + TypeScript + Vite + Tailwind + Three.js
