@@ -1,5 +1,5 @@
 // Fundamental physical constants (SI units) for the baseline ("our") universe.
-// Mirrors backend/genesis/physics/constants.py (CODATA 2018).
+// Mirrors backend/cosmos/physics/constants.py (CODATA 2018).
 
 export const C_LIGHT = 2.99792458e8;
 export const G_NEWTON = 6.6743e-11;

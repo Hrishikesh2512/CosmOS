@@ -15,7 +15,7 @@ export default function App() {
       <header className="flex items-center justify-between px-2">
         <div className="flex items-baseline gap-3">
           <h1 className="text-2xl font-bold bg-gradient-to-r from-cosmos-accent to-cosmos-accent2 bg-clip-text text-transparent">
-            ✦ GENESIS
+            ✦ COSMOS
           </h1>
           <span className="text-xs text-gray-500">Universe Creation & Evolution Simulator</span>
         </div>

@@ -1,4 +1,4 @@
-// Big Bang nucleosynthesis. Mirrors backend/genesis/physics/nucleosynthesis.py.
+// Big Bang nucleosynthesis. Mirrors backend/cosmos/physics/nucleosynthesis.py.
 
 import * as K from "./constants";
 import { clip } from "./rng";

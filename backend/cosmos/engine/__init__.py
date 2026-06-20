@@ -1,4 +1,4 @@
-"""Genesis simulation engine: orchestration, timeline and scorecard."""
+"""CosmOS simulation engine: orchestration, timeline and scorecard."""
 
 from .simulator import Simulator, SimulationResult, StageResult, simulate
 from .timeline import TimelineEvent, build_timeline

@@ -3,16 +3,16 @@ Physics validation tests.
 
 These assert that the engine reproduces known physics for the baseline universe
 and responds correctly (in direction and magnitude) to changes in fundamental
-constants. They are the scientific contract of Genesis.
+constants. They are the scientific contract of CosmOS.
 """
 
 import math
 
 import pytest
 
-from genesis.physics import constants as K
-from genesis.physics.parameters import UniverseParameters, MatterDensity, baseline
-from genesis.physics import dimensions, cosmology, nucleosynthesis, stars, chemistry
+from cosmos.physics import constants as K
+from cosmos.physics.parameters import UniverseParameters, MatterDensity, baseline
+from cosmos.physics import dimensions, cosmology, nucleosynthesis, stars, chemistry
 
 
 # --- Baseline reproduces our universe -----------------------------------
@@ -87,8 +87,8 @@ def test_stronger_gravity_raises_helium_fraction():
 
 # --- Chemistry ----------------------------------------------------------
 def test_larger_alpha_reduces_stable_elements():
-    from genesis.physics.planets import PlanetResult
-    from genesis.physics.nucleosynthesis import primordial_abundances
+    from cosmos.physics.planets import PlanetResult
+    from cosmos.physics.nucleosynthesis import primordial_abundances
     pl = PlanetResult(True, True, True, 0.5, 0.3, 3, 1, "")
     ec_base = baseline().effective()
     ec_alpha = UniverseParameters(alpha_mult=2.0).effective()

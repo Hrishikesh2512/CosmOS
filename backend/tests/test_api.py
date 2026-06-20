@@ -3,14 +3,14 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from genesis.api.main import app
+from cosmos.api.main import app
 
 
 @pytest.fixture()
 def client(tmp_path, monkeypatch):
     # Isolate the repository file per test run.
-    from genesis.api import routes
-    from genesis.storage.repository import UniverseRepository
+    from cosmos.api import routes
+    from cosmos.storage.repository import UniverseRepository
     routes.repo = UniverseRepository(tmp_path / "universes.json")
     return TestClient(app)
 

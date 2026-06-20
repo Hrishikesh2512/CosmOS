@@ -1,5 +1,5 @@
 // What-If engine: parse prompts into parameter changes and compare universes.
-// Mirrors backend/genesis/ai/whatif.py.
+// Mirrors backend/cosmos/ai/whatif.py.
 
 import { simulate } from "./simulator";
 import { baseline } from "./parameters";

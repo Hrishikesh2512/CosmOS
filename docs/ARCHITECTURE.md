@@ -1,8 +1,8 @@
-# Genesis - Architecture Guide
+# CosmOS - Architecture Guide
 
 ## Overview
 
-Genesis is a two-tier application:
+CosmOS is a two-tier application:
 
 ```
 ┌─────────────────────────────────────────────────────────┐
@@ -22,11 +22,11 @@ Genesis is a two-tier application:
 ```
 
 The **simulation engine is pure Python/NumPy/SciPy** and has no web
-dependencies - it can be imported and used as a library (`import genesis`).
+dependencies - it can be imported and used as a library (`import cosmos`).
 
 ## Backend layers
 
-### `genesis.physics` - the scientific core
+### `cosmos.physics` - the scientific core
 Independent, individually-testable modules, each modelling one physical domain.
 All are *normalized*: with baseline parameters (all multipliers = 1, 3D) they
 reproduce our universe.
@@ -42,7 +42,7 @@ reproduce our universe.
 - `nucleosynthesis.py`, `structure.py`, `stars.py`, `planets.py`,
   `chemistry.py`, `life.py`, `civilization.py` - the remaining stages.
 
-### `genesis.engine` - orchestration
+### `cosmos.engine` - orchestration
 - `simulator.py` - runs the 8 stages in order, threading each stage's output
   into the next; produces a `SimulationResult` (stages + scorecard + timeline +
   visualization payload). `_clean()` makes everything JSON-safe (NumPy → Python,
@@ -50,20 +50,20 @@ reproduce our universe.
 - `timeline.py` - derives the cosmic timeline.
 - `scorecard.py` - milestone pass/fail, habitability index, verdict.
 
-### `genesis.ai`
+### `cosmos.ai`
 - `scientist.py` - a deterministic, explainable causal-reasoning engine that
   inspects a `SimulationResult` and answers "why/how" questions. No external LLM
   required (so it is reproducible and always grounded in the actual run).
 - `whatif.py` - parses natural-language prompts into parameter changes and
   produces a milestone-by-milestone `Comparison` against a baseline.
 
-### `genesis.api`
+### `cosmos.api`
 - `main.py` - FastAPI app + CORS.
 - `routes.py` - `/simulate`, `/whatif`, `/ask`, `/baseline`, and the
   `/universes` CRUD + `/share` endpoints.
 - `schemas.py` - Pydantic request/response models.
 
-### `genesis.storage`
+### `cosmos.storage`
 - `repository.py` - atomic JSON file store for saved universes (swap for a real
   DB behind the same interface).
 

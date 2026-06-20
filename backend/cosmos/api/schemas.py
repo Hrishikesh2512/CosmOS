@@ -1,4 +1,4 @@
-"""Pydantic request/response models for the Genesis API."""
+"""Pydantic request/response models for the CosmOS API."""
 
 from __future__ import annotations
 

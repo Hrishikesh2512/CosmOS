@@ -36,7 +36,7 @@ class SavedUniverse:
 
 
 class UniverseRepository:
-    def __init__(self, path: str | Path = "genesis_universes.json"):
+    def __init__(self, path: str | Path = "cosmos_universes.json"):
         self.path = Path(path)
         self._lock = threading.Lock()
         if not self.path.exists():

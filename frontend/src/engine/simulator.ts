@@ -1,5 +1,5 @@
-// The Genesis simulator: orchestrates the eight cosmic stages in the browser.
-// Mirrors backend/genesis/engine/simulator.py.
+// The CosmOS simulator: orchestrates the eight cosmic stages in the browser.
+// Mirrors backend/cosmos/engine/simulator.py.
 
 import { RNG, clip } from "./rng";
 import { effective } from "./parameters";

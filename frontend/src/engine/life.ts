@@ -1,4 +1,4 @@
-// Life emergence. Mirrors backend/genesis/physics/life.py.
+// Life emergence. Mirrors backend/cosmos/physics/life.py.
 
 import type { ChemistryResult } from "./chemistry";
 import type { PlanetResult } from "./planets";

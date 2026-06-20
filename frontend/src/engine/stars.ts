@@ -1,5 +1,5 @@
 // Stellar physics: mass window, Chandrasekhar limit, lifetimes, IMF.
-// Mirrors backend/genesis/physics/stars.py.
+// Mirrors backend/cosmos/physics/stars.py.
 
 import * as K from "./constants";
 import * as dim from "./dimensions";

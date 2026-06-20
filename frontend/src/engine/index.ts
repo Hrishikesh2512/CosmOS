@@ -1,6 +1,6 @@
-// Genesis browser engine: a full TypeScript port of the Python simulation
+// CosmOS browser engine: a full TypeScript port of the Python simulation
 // engine so the app runs entirely client-side (e.g. on GitHub Pages) with no
-// backend. The physics mirrors backend/genesis and is normalized so the
+// backend. The physics mirrors backend/cosmos and is normalized so the
 // baseline universe reproduces our own.
 
 export { simulate } from "./simulator";

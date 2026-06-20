@@ -1,4 +1,4 @@
-// Cosmic timeline. Mirrors backend/genesis/engine/timeline.py.
+// Cosmic timeline. Mirrors backend/cosmos/engine/timeline.py.
 
 import type { TimelineEvent } from "../types";
 import type { ExpansionHistory } from "./cosmology";

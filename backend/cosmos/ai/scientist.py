@@ -1,5 +1,5 @@
 """
-The Genesis AI Scientist.
+The CosmOS AI Scientist.
 
 A rule-and-evidence reasoning engine that inspects a completed simulation and
 answers natural-language questions about *why* a universe turned out the way it

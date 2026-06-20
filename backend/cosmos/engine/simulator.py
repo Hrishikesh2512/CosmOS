@@ -1,5 +1,5 @@
 """
-The Genesis simulator: orchestrates the eight cosmic stages into a single,
+The CosmOS simulator: orchestrates the eight cosmic stages into a single,
 reproducible universe-evolution run.
 
 Stages:

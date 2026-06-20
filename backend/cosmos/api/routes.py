@@ -1,4 +1,4 @@
-"""API routes for Genesis."""
+"""API routes for CosmOS."""
 
 from __future__ import annotations
 
@@ -41,7 +41,7 @@ def _reconstruct(result_dict: dict[str, Any]) -> SimulationResult:
 
 @router.get("/health")
 def health() -> dict[str, str]:
-    return {"status": "ok", "service": "genesis"}
+    return {"status": "ok", "service": "cosmos"}
 
 
 @router.get("/baseline")

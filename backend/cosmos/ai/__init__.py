@@ -1,4 +1,4 @@
-"""Genesis AI: the AI Scientist and What-If reasoning engines."""
+"""CosmOS AI: the AI Scientist and What-If reasoning engines."""
 
 from .scientist import AIScientist, Diagnosis
 from .whatif import Comparison, compare, parse_what_if

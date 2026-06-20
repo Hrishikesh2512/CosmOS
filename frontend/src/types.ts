@@ -1,4 +1,4 @@
-// Shared types mirroring the Genesis backend API.
+// Shared types mirroring the CosmOS backend API.
 
 export type MatterDensity =
   | "near_empty"

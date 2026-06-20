@@ -1,5 +1,5 @@
 // Cosmology: expansion history and structure growth.
-// Mirrors backend/genesis/physics/cosmology.py. The scipy solve_ivp call is
+// Mirrors backend/cosmos/physics/cosmology.py. The scipy solve_ivp call is
 // replaced with a fixed-step RK4 integrator plus an analytic turning-point scan.
 
 import * as K from "./constants";

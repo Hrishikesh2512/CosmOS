@@ -1,5 +1,5 @@
 // Universe parameter model and resolution into effective physical constants.
-// Mirrors backend/genesis/physics/parameters.py.
+// Mirrors backend/cosmos/physics/parameters.py.
 
 import * as K from "./constants";
 import type { UniverseParameters, MatterDensity } from "../types";

@@ -53,7 +53,7 @@ export function SavePanel() {
     if (!canvas) return;
     const a = document.createElement("a");
     a.href = (canvas as HTMLCanvasElement).toDataURL("image/png");
-    a.download = "genesis-universe.png";
+    a.download = "cosmos-universe.png";
     a.click();
   };
 
@@ -61,7 +61,7 @@ export function SavePanel() {
     if (!result) return "";
     const sc = result.scorecard;
     const lines = [
-      `# Genesis Universe Report - ${result.parameters.name}`,
+      `# CosmOS Universe Report - ${result.parameters.name}`,
       ``,
       `**Outcome:** ${sc.outcome}`,
       `**Habitability index:** ${(sc.habitability_index * 100).toFixed(0)}%`,

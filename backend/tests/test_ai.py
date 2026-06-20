@@ -2,9 +2,9 @@
 
 import pytest
 
-from genesis import simulate, UniverseParameters, MatterDensity, baseline
-from genesis.ai.scientist import AIScientist
-from genesis.ai.whatif import compare, parse_what_if, _build_comparison
+from cosmos import simulate, UniverseParameters, MatterDensity, baseline
+from cosmos.ai.scientist import AIScientist
+from cosmos.ai.whatif import compare, parse_what_if, _build_comparison
 
 
 def _result(**kw):

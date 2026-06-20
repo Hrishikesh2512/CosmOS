@@ -1,5 +1,5 @@
 // Dimensional physics: force laws and orbital/atomic stability per dimension.
-// Mirrors backend/genesis/physics/dimensions.py (Bertrand's theorem).
+// Mirrors backend/cosmos/physics/dimensions.py (Bertrand's theorem).
 
 export interface DimensionalProfile {
   dimensions: number;

@@ -5,8 +5,8 @@ import math
 
 import pytest
 
-from genesis import simulate, UniverseParameters, MatterDensity, baseline
-from genesis.engine.simulator import _clean
+from cosmos import simulate, UniverseParameters, MatterDensity, baseline
+from cosmos.engine.simulator import _clean
 
 
 def test_baseline_is_life_bearing():

@@ -1,4 +1,4 @@
-// Client facade for the Genesis engine.
+// Client facade for the CosmOS engine.
 //
 // The simulation runs entirely in the browser (see src/engine), so the app is a
 // fully static site that works on GitHub Pages with no backend. Saved universes
@@ -16,7 +16,7 @@ import type {
 } from "../types";
 import { simulate, baseline, parseWhatIf, compare, AIScientist } from "../engine";
 
-const STORE_KEY = "genesis.universes";
+const STORE_KEY = "cosmos.universes";
 
 interface StoredUniverse {
   id: string;

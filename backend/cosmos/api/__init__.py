@@ -1,4 +1,4 @@
-"""Genesis HTTP API (FastAPI)."""
+"""CosmOS HTTP API (FastAPI)."""
 
 from .main import app
 

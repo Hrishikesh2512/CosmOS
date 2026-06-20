@@ -1,4 +1,4 @@
-# Genesis - Developer Guide
+# CosmOS - Developer Guide
 
 ## Prerequisites
 
@@ -17,13 +17,13 @@ python -m pip install -e ".[dev]"                   # editable + test deps
 Run the API:
 
 ```bash
-uvicorn genesis.api.main:app --reload --port 8000
+uvicorn cosmos.api.main:app --reload --port 8000
 ```
 
 Use the engine as a library:
 
 ```python
-from genesis import simulate, UniverseParameters, AIScientist
+from cosmos import simulate, UniverseParameters, AIScientist
 
 result = simulate(UniverseParameters(name="Strong G", G_mult=100))
 print(result.scorecard.outcome)
@@ -63,7 +63,7 @@ npm run build        # production build
 
 ## Adding a new physics stage
 
-1. Create `genesis/physics/<stage>.py` with a dataclass result and a pure
+1. Create `cosmos/physics/<stage>.py` with a dataclass result and a pure
    function `evaluate_<stage>(ec, ...prev_results) -> Result`. Normalize so the
    baseline reproduces reality.
 2. Add validation tests in `tests/test_physics_validation.py` asserting both the

@@ -1,5 +1,5 @@
 // AI Scientist: deterministic causal reasoning over a simulation result.
-// Mirrors backend/genesis/ai/scientist.py.
+// Mirrors backend/cosmos/ai/scientist.py.
 
 import type { SimulationResult, Diagnosis, Scorecard, UniverseParameters } from "../types";
 

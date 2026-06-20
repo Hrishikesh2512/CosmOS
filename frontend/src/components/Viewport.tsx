@@ -37,7 +37,7 @@ export function Viewport() {
         {!result ? (
           <div className="absolute inset-0 flex flex-col items-center justify-center text-center px-8">
             <div className="text-6xl mb-4 animate-pulse">✦</div>
-            <h2 className="text-2xl font-semibold mb-2">Genesis</h2>
+            <h2 className="text-2xl font-semibold mb-2">CosmOS</h2>
             <p className="text-gray-400 max-w-md">
               Adjust the fundamental laws of reality on the left, then press{" "}
               <span className="text-cosmos-accent2">Create Universe</span> to

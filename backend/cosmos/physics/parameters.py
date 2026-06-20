@@ -3,7 +3,7 @@ Universe parameter model.
 
 A :class:`UniverseParameters` instance fully specifies a universe. Fundamental
 constants are stored as dimensionless *multipliers* relative to the baseline
-values in :mod:`genesis.physics.constants`. Cosmological knobs (dimensions,
+values in :mod:`cosmos.physics.constants`. Cosmological knobs (dimensions,
 matter density, dark matter / dark energy) are stored directly.
 
 The class also exposes the *effective* physical constants of the universe via

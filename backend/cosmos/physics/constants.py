@@ -1,8 +1,8 @@
 """
 Fundamental physical constants (SI units) for the baseline ("our") universe.
 
-These are the reference values. A Genesis universe is defined by *multipliers*
-applied to a subset of these constants (see :mod:`genesis.physics.parameters`).
+These are the reference values. A CosmOS universe is defined by *multipliers*
+applied to a subset of these constants (see :mod:`cosmos.physics.parameters`).
 All derived physics in the engine is expressed relative to these baselines so
 that a multiplier of ``1.0`` everywhere reproduces the real universe.
 

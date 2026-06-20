@@ -1,4 +1,4 @@
-# Genesis - Physics Model Guide
+# CosmOS - Physics Model Guide
 
 This document explains the physics behind each simulation stage, the key
 equations, and how each user parameter propagates through the causal chain.

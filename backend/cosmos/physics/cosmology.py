@@ -5,7 +5,7 @@ Implements a flat-ish FLRW model integrating the Friedmann equation
 
     (a'/a)^2 = H0^2 [ Omega_r a^-4 + Omega_m a^-3 + Omega_lambda + Omega_k a^-2 ]
 
-with the engine's effective constants. Because Genesis lets the user change G,
+with the engine's effective constants. Because CosmOS lets the user change G,
 c and the density parameters, we rescale H0 self-consistently: the present-day
 critical density tracks G, and the expansion rate responds to total density and
 dark-energy strength.

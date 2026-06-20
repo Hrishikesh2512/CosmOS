@@ -1,4 +1,4 @@
-// Chemistry. Mirrors backend/genesis/physics/chemistry.py.
+// Chemistry. Mirrors backend/cosmos/physics/chemistry.py.
 
 import * as K from "./constants";
 import * as dim from "./dimensions";

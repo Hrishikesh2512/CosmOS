@@ -1,4 +1,4 @@
-// Planet formation and habitable zones. Mirrors backend/genesis/physics/planets.py.
+// Planet formation and habitable zones. Mirrors backend/cosmos/physics/planets.py.
 
 import * as K from "./constants";
 import * as dim from "./dimensions";

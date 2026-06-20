@@ -1,8 +1,8 @@
-# Genesis - User Guide
+# CosmOS - User Guide
 
 ## Getting started
 
-1. Start the backend (`uvicorn genesis.api.main:app --port 8000`) and frontend
+1. Start the backend (`uvicorn cosmos.api.main:app --port 8000`) and frontend
    (`npm run dev`), then open <http://localhost:5173>.
 2. The left panel holds the **Universe Parameters**. The centre is the
    **Viewport**. The right rail shows results once you create a universe.
@@ -45,7 +45,7 @@ Crunch).
 ## The What-If Engine
 
 Type a question like *"What if gravity was 100× stronger?"* or click an example.
-Genesis simulates the alternate universe, compares it to your current one, and
+CosmOS simulates the alternate universe, compares it to your current one, and
 shows which milestones were **gained (+)** or **lost (−)**, plus the change in
 habitability. Recognized phrases include gravity, speed of light, Planck
 constant, charge, fine-structure constant / α, dimensions, dark matter and dark

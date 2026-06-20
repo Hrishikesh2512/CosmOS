@@ -1,7 +1,7 @@
-"""Genesis physics engine.
+"""CosmOS physics engine.
 
 A collection of physically-motivated, parameter-driven models that turn a
-:class:`~genesis.physics.parameters.UniverseParameters` definition into a full
+:class:`~cosmos.physics.parameters.UniverseParameters` definition into a full
 chain of cosmic consequences -- from the Big Bang through chemistry, life and
 civilization. Each module is independently testable and normalized so that the
 baseline universe reproduces our own.

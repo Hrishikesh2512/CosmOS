@@ -1,4 +1,4 @@
-// Civilization emergence. Mirrors backend/genesis/physics/civilization.py.
+// Civilization emergence. Mirrors backend/cosmos/physics/civilization.py.
 
 import { RNG } from "./rng";
 import type { LifeResult } from "./life";

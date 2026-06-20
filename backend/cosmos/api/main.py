@@ -1,4 +1,4 @@
-"""FastAPI application entry point for Genesis."""
+"""FastAPI application entry point for CosmOS."""
 
 from __future__ import annotations
 
@@ -9,7 +9,7 @@ from .. import __version__
 from .routes import router
 
 app = FastAPI(
-    title="Genesis API",
+    title="CosmOS API",
     description="Universe creation and evolution simulator.",
     version=__version__,
 )
@@ -27,4 +27,4 @@ app.include_router(router, prefix="/api")
 
 @app.get("/")
 def root() -> dict[str, str]:
-    return {"service": "Genesis", "version": __version__, "docs": "/docs"}
+    return {"service": "CosmOS", "version": __version__, "docs": "/docs"}

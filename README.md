@@ -1,22 +1,22 @@
-# ✦ Genesis - Universe Creation & Evolution Simulator
+# ✦ CosmOS - Universe Creation & Evolution Simulator
 
-Genesis lets you **modify the fundamental laws of reality and watch entire
+CosmOS lets you **modify the fundamental laws of reality and watch entire
 universes emerge**. Change the speed of light, crank up gravity, add a fourth
 spatial dimension, or delete dark matter - then press **Create Universe** and
-watch Genesis simulate the consequences from the Big Bang all the way to
+watch CosmOS simulate the consequences from the Big Bang all the way to
 civilizations.
 
 It combines the feel of *Universe Sandbox*, *Civilization* and *No Man's Sky*
 with a genuinely physics-grounded simulation engine.
 
 > What if gravity was 100× stronger? What if the speed of light was slower? What
-> if space had 4 dimensions? Genesis answers these questions by *simulating* them.
+> if space had 4 dimensions? CosmOS answers these questions by *simulating* them.
 
 ---
 
 ## What it does
 
-From a handful of fundamental constants and cosmological parameters, Genesis
+From a handful of fundamental constants and cosmological parameters, CosmOS
 runs an **eight-stage simulation**:
 
 | Stage | What it computes |
@@ -75,7 +75,7 @@ prefer a server, notebooks or batch parameter sweeps.
 ```bash
 cd backend
 python -m pip install -r requirements.txt
-uvicorn genesis.api.main:app --reload --port 8000
+uvicorn cosmos.api.main:app --reload --port 8000
 # API docs at http://localhost:8000/docs
 ```
 
@@ -99,7 +99,7 @@ python -m pytest          # 59 tests, ~94% coverage, incl. physics validation
 
 ```
 backend/
-  genesis/
+  cosmos/
     physics/      # the scientific core (constants, cosmology, stars, chemistry…)
     engine/       # 8-stage orchestration, timeline, scorecard
     ai/           # AI Scientist + What-If engine
@@ -124,7 +124,7 @@ docs/             # architecture, physics model, user & developer guides
 
 ## A note on scientific scope
 
-Genesis is a *serious* simulation platform, not a toy. Its models are
+CosmOS is a *serious* simulation platform, not a toy. Its models are
 order-of-magnitude, normalized so that the baseline (all multipliers = 1, 3D)
 reproduces our own universe, and they respond in the correct direction and
 magnitude to changes in the constants - this is enforced by a suite of physics

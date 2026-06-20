@@ -1,5 +1,5 @@
 """
-Genesis -- a universe creation and evolution simulator.
+CosmOS -- a universe creation and evolution simulator.
 
 Modify the fundamental laws of reality and watch entire universes emerge, from
 the Big Bang through chemistry, life and civilization.

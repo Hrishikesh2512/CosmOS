@@ -1,4 +1,4 @@
-// Universe scorecard. Mirrors backend/genesis/engine/scorecard.py.
+// Universe scorecard. Mirrors backend/cosmos/engine/scorecard.py.
 
 import type { Scorecard } from "../types";
 import type { ExpansionHistory } from "./cosmology";

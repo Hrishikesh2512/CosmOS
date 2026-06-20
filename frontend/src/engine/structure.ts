@@ -1,4 +1,4 @@
-// Large-scale structure formation. Mirrors backend/genesis/physics/structure.py.
+// Large-scale structure formation. Mirrors backend/cosmos/physics/structure.py.
 
 import { clip } from "./rng";
 import * as dim from "./dimensions";
